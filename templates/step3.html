@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block form %}
+	<div><h3>Трапеза</h3></div>
+	<form action="" class = "" method="POST"> <!-- Нужная форма -->
+        {% include "form.html"%}
+        <br>
+        <a class="btn indigo" href="/step2">Back
+        </a>
+        <button class="btn indigo" type="submit" name="action">Submit
+        </button>
+      </form>
+{% endblock %}

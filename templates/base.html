@@ -1,0 +1,60 @@
+<!--<html ng-app>-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> New Project (from Null) </title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.3.3"></script>
+    <style type="text/css">
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>-->
+  </head> 
+  <nav class=" light-blue accent-4">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <a href="/" class="">Main page</a>
+      </ul>
+    </div>
+  </nav> 
+
+  <body class="">
+    <div>       
+    </div>
+    <div class="form-pttn container">
+
+    {% block form %}{% endblock %}
+    {% block content %}{% endblock %}
+    
+    </div>
+  </body>  
+
+
+  <footer class="page-footer  light-blue accent-4">
+    <div class="container">
+      <div class="row">
+        <span class="grey-text text-lighten-4 left">В процессе разработки</span> 
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2017 Copyright Text
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/forms.js') }}">  </script>
+</html> 

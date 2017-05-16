@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block form %}
+	<div>
+		<h3>Основная информация о сроках пребывания и количестве гостей</h3>
+	</div>
+
+	<div class="row z-depth-1 light-blue lighten-5">
+		<div class="">
+			Количество паломников(вычисляется автоматически):
+		</div> 
+		<div class="pers_num"></div>
+		<br>
+		<div class="">
+			Количество ночей проживания (вычисляется автоматически):
+		</div> 
+		<div class="nights"></div>
+		<br>
+	</div>
+	<br>
+	<form action="" method="POST"  id="step2form"> <!-- Нужная форма -->
+        {% include "form.html"%}
+        <br>
+        <a class="btn indigo" href="/step1">Back
+        </a>
+        <button class="btn indigo" type="submit" name="action">Submit
+        </button>
+      </form>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/step2.js') }}">  </script>
+{% endblock %}
