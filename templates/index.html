@@ -3,7 +3,11 @@
 {% block content %}
     <div>
 		Список заявок:
-
+		{% for g in guests %}
+			<div>
+				<a href="/change_guest/{{g.id}}">{{g.json_string}}<a>
+			</div>
+		{% endfor %}
     </div>
 
     <div>
