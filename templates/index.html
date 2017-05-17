@@ -1,17 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
-		Список заявок:
-		{% for g in guests %}
-			<div>
-				<a href="/change_guest/{{g.id}}">{{g.json_string}}<a>
-			</div>
-		{% endfor %}
-    </div>
+<style type="text/css">
+	@media screen and (max-width: 640px) {
+	table {
+		overflow-x: auto;
+		display: block;
+	}
+}
 
-    <div>
+</style>
+	 <div>
 	    <a class="btn cyan" href="/new_form" type="submit">Новая заявка</a> 
     </div>
-
+    <br>
+    <div>
+		Список заявок:
+		<table class="bordered">
+			<thead>
+				<tr>
+					<th>Имя группы:</th>
+					<th>Дата прибытия: </th>
+					<th>Дата выбытия: </th>
+					<th>Старший: </th>
+					<th>Кто?: </th>
+					<th>Готова?: </th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for g in guests %}
+				<tr onclick="window.document.location='/change_guest/{{g.pk}}/';">
+					<td>{{g.group_name}}</td>
+					<td>{{g.date_arr}}</td>
+					<td>{{g.date_dep}}</td>
+					<td>{{g.senior}}</td>
+					<td>{{g.pers_status}}</td>
+					<td>{{g.is_ready}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    </div>
 {% endblock %}

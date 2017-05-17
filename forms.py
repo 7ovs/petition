@@ -27,7 +27,7 @@ class Step1Form(form.Form):
     	#validators=[validators.input_required()], 
     	label = "Какими языками владеют"
     )
-    status = fields.StringField(
+    pers_status = fields.StringField(
     	#validators=[validators.input_required()], 
     	label = "Информация о госте"
     )
