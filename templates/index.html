@@ -24,21 +24,42 @@
 					<th>Дата выбытия: </th>
 					<th>Старший: </th>
 					<th>Кто?: </th>
+					<th>Размер группы: </th>
 					<th>Готова?: </th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for g in guests %}
-				<tr onclick="window.document.location='/change_guest/{{g.pk}}/';">
+				<tr>
 					<td>{{g.group_name}}</td>
 					<td>{{g.date_arr}}</td>
 					<td>{{g.date_dep}}</td>
 					<td>{{g.senior}}</td>
 					<td>{{g.pers_status}}</td>
+					<td>{{g.total_persons}}</td>
 					<td>{{g.is_ready}}</td>
+					<td>
+						<a href="/change_guest/{{g.pk}}/">
+							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Подробная информация">
+								subject
+							</i>
+						</a>
+					</td>
+					<td>
+						<a href="/create_docx/{{g.pk}}">
+							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Получить Word">
+								description
+							</i>
+						</a>
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
     </div>
+    <script type="text/javascript">
+	  $(document).ready(function(){
+	    $('.tooltipped').tooltip({delay: 50});
+	  });   
+    </script>
 {% endblock %}
