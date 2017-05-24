@@ -6,13 +6,20 @@ import models
 from sqlalchemy import update
 from functools import reduce
 from create_docx import DocxHandler
+from flask_httpauth import HTTPBasicAuth
 
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
+users = {
+    "tatiana": "OVS",
+    "artiom": "OVS"
+}
 
 GROUP_INFO = 'group_info'
 GUEST_KEY = 'guest_id'
-PERSON_FIELDS = ['brothers', 'sisters', 'children', 'clerics']
+PERSON_FIELDS = ['brothers', 'sisters', 'children', 'сlergy']
 
 
 class JGuest(object):
@@ -34,7 +41,7 @@ class JGuest(object):
         self.date_arr = self.json_string['date_arr']
         self.date_dep = self.json_string['date_dep']
         self.senior = self.json_string['senior']
-        self.pers_status = self.json_string['pers_status']
+        self.pers_status = self.json_string['guest_information']
         self.total_persons = self.__total_persons()
         self.is_ready =  self.__is_ready()
 
@@ -62,10 +69,10 @@ class PetitionHandler(object):
     db_session  = models.session
     person_keys = PERSON_FIELDS
 
-    def index(self):
+    def admin(self):
         guests = self.db_session.query(self.model).all()
         guests = [JGuest( g.id, g.json_string)  for g in guests]
-        return render_template('index.html', guests=guests)
+        return render_template('admin.html', guests=guests)
 
     def new_form(self, next_form):
         session[GROUP_INFO] = {}
@@ -79,21 +86,38 @@ class PetitionHandler(object):
         session[GROUP_INFO] = info
         return redirect(url_for(next_form))
 
+    def change_language(self):
+        session[GROUP_INFO] = {}
+        session[GUEST_KEY] =  None
+        session['language'] = None
+        if request.method == 'GET':
+            return render_template('index.html')
+        elif request.method == 'POST':
+            print(request.form['language'])
+            session['language'] = request.form['language']
+            return redirect(url_for('step1'))
+
     def create_docx(self, pk):
         json_string = self.db_session.query(self.model).get(pk).json_string
         doc_name = DocxHandler(json_string).create_docx()
         return send_file(doc_name, as_attachment=True)
 
-    def step_handler(self, current_page, next_page, form=None):
+    def step_handler(self, current_page, next_page, formClass=None):
         if request.method == 'GET':
-            form = form(**(session[GROUP_INFO]))
+            form = formClass(**(session[GROUP_INFO]), language=session['language'])
             return render_template(current_page, group_info=session[GROUP_INFO], form=form)
-        else:
-            form = form(request.form)
-            session[GROUP_INFO].update(form.data)
-            session[GROUP_INFO] = session[GROUP_INFO]
-            return redirect(url_for(next_page))
-
+        if request.method == 'POST':
+            form_data = {i:request.form[i] for i in request.form if request.form[i]}
+            print(form_data)
+            form = formClass(**form_data, language=session['language'])
+            print(form.validate())
+            if form.validate():
+                print('ok')
+                session[GROUP_INFO].update(dict(form.data))
+                session[GROUP_INFO] = session[GROUP_INFO]
+                return redirect(url_for(next_page))
+            return render_template(current_page, form=form)
+            
     def applicate(self):
         self.__fill_empty_persons()
         json_string = json.dumps(session[GROUP_INFO])
@@ -117,9 +141,21 @@ class PetitionHandler(object):
 
 petitions = PetitionHandler()
 
-@app.route("/")
-def index():
-    return petitions.index()
+@auth.get_password
+def get_pw(username):
+    if username in users:
+        return users.get(username)
+    return None
+
+
+@app.route("/admin")
+@auth.login_required
+def admin():
+    return petitions.admin()
+
+@app.route("/",  methods=['GET', 'POST'])
+def change_language():
+    return petitions.change_language()
 
 @app.route('/create_docx/<int:pk>/')
 def create_docx(pk):

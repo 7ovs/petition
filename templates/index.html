@@ -1,65 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<style type="text/css">
-	@media screen and (max-width: 640px) {
-	table {
-		overflow-x: auto;
-		display: block;
-	}
-}
+	
+	
+<form action="" method="POST">
 
-</style>
-	 <div>
-	    <a class="btn cyan" href="/new_form" type="submit">Новая заявка</a> 
-    </div>
-    <br>
-    <div>
-		Список заявок:
-		<table class="bordered">
-			<thead>
-				<tr>
-					<th>Имя группы:</th>
-					<th>Дата прибытия: </th>
-					<th>Дата выбытия: </th>
-					<th>Старший: </th>
-					<th>Кто?: </th>
-					<th>Размер группы: </th>
-					<th>Готова?: </th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for g in guests %}
-				<tr>
-					<td>{{g.group_name}}</td>
-					<td>{{g.date_arr}}</td>
-					<td>{{g.date_dep}}</td>
-					<td>{{g.senior}}</td>
-					<td>{{g.pers_status}}</td>
-					<td>{{g.total_persons}}</td>
-					<td>{{g.is_ready}}</td>
-					<td>
-						<a href="/change_guest/{{g.pk}}/">
-							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Подробная информация">
-								subject
-							</i>
-						</a>
-					</td>
-					<td>
-						<a href="/create_docx/{{g.pk}}">
-							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Получить Word">
-								description
-							</i>
-						</a>
-					</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-    </div>
-    <script type="text/javascript">
-	  $(document).ready(function(){
-	    $('.tooltipped').tooltip({delay: 50});
-	  });   
-    </script>
+    <p>
+      <input name="language" type="radio" id="rus" value="ru" />
+      <label for="rus">Русский</label>
+    </p>
+    <p>
+      <input class="with-gap" name="language" type="radio" id="eng" value="en" />
+      <label for="eng">English</label>
+    </p>
+
+	<button class="btn indigo waves-effect waves-light" type="submit" name="action">
+		Submit
+	</button>
+</form>
 {% endblock %}

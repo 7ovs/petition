@@ -7,8 +7,11 @@
 
 {% for field in form %}
     <div class="input-field {{field.id}}">
-	    {{ field }} 
-        {{ field.label }}
-        
+    		{{ field }} 
+    	{% if field.errors %}
+        	<label for="{{field.name}}" style= "color:red; border-bottom:orange;">{{ field.label }}</label>        
+        {% else %}
+	    	<label for="{{field.name}}">{{ field.label }}</label>        
+    	{% endif %}
     </div>
 {% endfor %}

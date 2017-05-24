@@ -10,7 +10,7 @@ from functools import reduce
 import datetime 
 
 
-PERSON_FIELDS = ['brothers', 'sisters', 'children', 'clerics']
+PERSON_FIELDS = ['brothers', 'sisters', 'children', 'сlergy']
 
 
 class DocxHandler(object):
@@ -62,4 +62,6 @@ class DocxHandler(object):
         self.json_string['total_persons'] = str(self.__total_persons())
         delta = self.__extract_date(self.json_string['date_dep']) - self.__extract_date(self.json_string['date_arr'])
         self.json_string['nights'] = str(delta.days)
+
+
         

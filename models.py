@@ -22,6 +22,8 @@ class Guest(Base):
         self.json_string = json_string
 
     def __repr__(self):
-        return '<User %r>' % self.json_string
+        return '<guests %r>' % self.json_string
 
 
+def create_db():
+	Base.metadata.create_all(engine)

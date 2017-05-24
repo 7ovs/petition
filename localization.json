@@ -1,0 +1,133 @@
+{
+	"group_name" : 
+		{
+			"en" : "Group Name *",
+			"ru" : "Имя Группы *"
+		},
+	"senior" :
+		{
+			"en" : "Senior *",
+			"ru" : "Старший группы *"
+		},
+	"phone" : 
+		{
+			"en" : "Contact phone",
+			"ru" : "Номер телефона"
+		},
+	"arr_aim" :
+		{
+			"en" : "Goal of arrival",
+			"ru" : "Цель приезда"
+		},
+	"languages"	:
+		{
+			"en" : "Languages *",
+			"ru" : "Языки *"
+		},
+	"guest_information" :
+		{
+			"en" : "Guest information",
+			"ru" : "Информация о госте"
+		},
+
+	"email" : 
+		{
+			"en" : "E-mail",
+			"ru" : "E-mail"
+		},
+
+	"date_arr" : 
+		{
+			"en" : "Date and time of arrival",
+			"ru" : "Время прибытия"
+		},
+	"date_dep" :
+		{
+			"en" : " Date and time of departure",
+			"ru" : "Дата и время выезда"
+		},
+	"brothers" : 
+		{
+			"en" : "brothers",
+			"ru" : "Братья"
+		},
+	"sisters" :
+		{
+			"en" : "Sisters",
+			"ru" : "Сестры"
+		},
+	"children"	:
+		{
+			"en" : "Children",
+			"ru" : "Дети"
+		},
+	"сlergy" :
+		{
+			"en" : "Clergy or monastic people",
+			"ru" : "Священство и монашествующие"
+		},
+
+	"tours" : 
+		{
+			"en" : "Место и время проведения экскурсии",
+			"ru" : "Place and time of the tour"
+		},
+	"transport" :
+		{
+			"en" : "Transport",
+			"ru" : "Транспорт для экскурсий (свой или наемный)"
+		},
+
+
+	"meal" : 
+		{
+			"en" : "Meal",
+			"ru" : "Трапеза"
+		},
+	"breakfast" :
+		{
+			"en" : " Breakfast time",
+			"ru" : "Завтрак"
+		},
+	"breakfast_persons" : 
+		{
+			"en" : "Number of persons",
+			"ru" : "Количество человек"
+		},
+	"lunch" :
+		{
+			"en" : "Lunch time",
+			"ru" : "Обеда, время"
+		},
+	"lunch_persons"	:
+		{
+			"en" : "Number of persons",
+			"ru" : "Количество человек "
+		},
+	"dinner" :
+		{
+			"en" : "Dinner time",
+			"ru" : "Ужин, время"
+		},
+
+	"dinner_persons" : 
+		{
+			"en" : "Number of persons",
+			"ru" : "Количество человек "
+		},
+	"breakfast_comments" : 
+		{
+			"en" : "Breakfast comments",
+			"ru" : "Особенности завтрака "
+		},
+	"lunch_comments" : 
+		{
+			"en" : "Lunch comments",
+			"ru" : "Особенности обеда"
+		},
+	"dinner_comments" : 
+		{
+			"en" : "Dinner comments",
+			"ru" : "Особенности ужина"
+		}
+}

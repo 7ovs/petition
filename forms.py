@@ -1,110 +1,105 @@
 import wtforms.form as form
 import wtforms.fields as fields
-from wtforms import validators 
+from wtforms import validators, widgets
+import json
 
-class Step1Form(form.Form):
+class LocalizatedForm(form.Form):
+    """add localization to standart WTForm with json doc"""
+    def __init__(self, language='en', *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.language = language
+        self.__localizate_fields()
+
+    def __localizate_fields(self):
+        self.__extract_localization_json()
+        for f in self:
+            json_field = self.localization[f.name]
+            f.label = json_field.get(self.language) or json_field['en']
+
+    def __extract_localization_json(self):
+        with open('localization.json') as json_data:
+            self.localization = json.load(json_data)
+
+
+class Step1Form(LocalizatedForm):
     group_name = fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Название группы (страна, город, приход) / Group Name (location: country, city, parish)"
+    	validators=[validators.Length(min=2, max=25)]
     )
     senior = fields.StringField( 
-    	#validators=[validators.input_required()], 
-    	label = "ФИО старшего группы (имена) / Senior group (person in charge)"
+    	validators=[validators.Length(min=2, max=25)]
     )
-    responsible = fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Ответственный за данных гостей из региона ОВС"
-    )
+    # responsible = fields.StringField(
+    # 	#validators=[validators.input_required()], 
+    # )
     phone =  fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Номер телефона ответственного / Contact::"
     )
     arr_aim = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Цель приезда"
     )
     languages = fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Какими языками владеют"
+    	validators=[validators.Length(min=2, max=25)]
     )
-    pers_status = fields.StringField(
+    guest_information = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Информация о госте"
     )
-    follow =  fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Нужно ли встречать-провожать и кто это осуществит?"
-    )
+    # follow =  fields.StringField(
+    # 	#validators=[validators.input_required()], 
+    # )
     email =  fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "E-mail:"
     )
 
 
 
-class Step2Form(form.Form):
+class Step2Form(LocalizatedForm):
     date_arr = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Дата и время прибытия / Date and time of arrival",
-    	id="date_arr"
     )
     date_dep = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Дата и время выезда / Date and time of departure:",
-    	id="date_dep"
     )
     brothers = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Братья / Brothers (males)", 
     )
     sisters = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Сестры / Sisters (femasstrsles)", 
     )
     children = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Дети / Children ", 
     )
-    clerics = fields.StringField(
+    сlergy = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Священство и монашествующие / Clergy or monastic people", 
     )
-    excursions = fields.StringField(
+    tours = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Место и время проведения экскурсии / Place and time of the tour "
     )
     transport = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Транспорт для экскурсий (свой или наемный)"
     )
 
 
-class Step3Form(form.Form):
+class Step3Form(LocalizatedForm):
     meal = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Заказ трапезы / Meal booking (date and time)"
     )
+
     breakfast = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Завтрак, время / Breakfast time: "
     )
     breakfast_persons = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Количество человек / Number of persons: "
     )
+    breakfast_comments = fields.StringField(widget = widgets.TextArea())
+
     lunch = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Обед, время / Lunch time:"
     )
     lunch_persons = fields.StringField(
     	#validators=[validators.input_required()], 
-    	label = "Количество человек / Number of persons: "
     )
-    dinner = fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Ужин, время / Dinner time: "
-    )
-    dinner_persons = fields.StringField(
-    	#validators=[validators.input_required()], 
-    	label = "Количество человек / Number of persons:"
-    )
+    lunch_comments = fields.StringField(widget = widgets.TextArea())
+
+    dinner = fields.StringField()
+    dinner_persons = fields.StringField()
+    dinner_comments = fields.StringField()
