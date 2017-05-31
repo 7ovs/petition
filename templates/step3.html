@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 
 {% block form %}
-	<div><h3>Трапеза</h3></div>
-	<form action="" class = "" method="POST"> <!-- Нужная форма -->
-        {% include "form.html"%}
-        <br>
-        <a class="btn indigo" href="/step2">Back
-        </a>
-        <button class="btn indigo waves-effect waves-light" type="submit" name="action">Submit
-        </button>
-      </form>
-      <script type="text/javascript" src="{{ url_for('static', filename='js/step3.js') }}">  </script>
+	<div>
+    <h3>{{localizator.meal_info}}</h3>
+  </div>
+	<form action="" class = "" method="POST" > <!-- Нужная форма -->
+      {% include "form.html"%}
+      <br>
+      <a class="btn grey back-button" href="/step2">{{localizator.back_button}}
+      </a>
+      <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">
+        {{localizator.submit_button}}
+      </button>
+  </form>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/step3.js') }}">  </script>
 {% endblock %}

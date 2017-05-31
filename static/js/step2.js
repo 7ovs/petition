@@ -58,9 +58,8 @@ date_nodes.forEach(function(id){
 		selectYears: 15 // Creates a dropdown of 15 years to control year
 	});
 });
-
-
+ 
 $(document).ready(function(){
 	pers_num_summ();
-	nights()
+	nights();
 })

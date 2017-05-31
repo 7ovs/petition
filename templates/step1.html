@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block form %}
-	<div><h3>Основная информация о гостях</h3></div>
+	<div><h3>{{localizator.main_info}}</h3></div>
 	<br>
-	<form action="" class = "" method="POST"> <!-- Нужная форма -->
+	<form action="" class = "" method="POST" > <!-- Нужная форма -->
         {% include "form.html"%}
         <br>
-        <button class="btn indigo waves-effect waves-light" type="submit" name="action">Submit
+        <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">{{localizator.submit_button}}
         </button>
-      </form>
+	</form>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/step1.js') }}">  </script>
 {% endblock %}

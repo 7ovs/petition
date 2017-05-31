@@ -1,0 +1,27 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+i { 
+	cursor: pointer; 
+	cursor: hand; 
+}
+
+.material-icons.add_row_button{
+	color: #0B9444;
+}
+
+.material-icons.del_row_button{
+	color: #662D91;
+	position: left;
+}
+
+.back-button{
+	color: white;
+}

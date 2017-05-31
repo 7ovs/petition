@@ -5,21 +5,15 @@ import json
 
 class LocalizatedForm(form.Form):
     """add localization to standart WTForm with json doc"""
-    def __init__(self, language='en', *args, **kwargs):
+    def __init__(self, localizator, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.language = language
+        self.localizator = localizator
         self.__localizate_fields()
 
     def __localizate_fields(self):
-        self.__extract_localization_json()
         for f in self:
-            json_field = self.localization[f.name]
-            f.label = json_field.get(self.language) or json_field['en']
-
-    def __extract_localization_json(self):
-        with open('localization.json') as json_data:
-            self.localization = json.load(json_data)
-
+            f.label =  self.localizator.localizated_form_fields[f.name]
+            f.header =  self.localizator.localizated_form_fields[f.name]
 
 class Step1Form(LocalizatedForm):
     group_name = fields.StringField(
@@ -56,9 +50,11 @@ class Step2Form(LocalizatedForm):
     date_arr = fields.StringField(
     	#validators=[validators.input_required()], 
     )
+    time_arr =  fields.StringField()
     date_dep = fields.StringField(
     	#validators=[validators.input_required()], 
     )
+    time_dep = fields.StringField()
     brothers = fields.StringField(
     	#validators=[validators.input_required()], 
     )
@@ -80,9 +76,9 @@ class Step2Form(LocalizatedForm):
 
 
 class Step3Form(LocalizatedForm):
-    meal = fields.StringField(
-    	#validators=[validators.input_required()], 
-    )
+    # meal = fields.StringField(
+    # 	#validators=[validators.input_required()], 
+    # )
 
     breakfast = fields.StringField(
     	#validators=[validators.input_required()], 
@@ -90,7 +86,7 @@ class Step3Form(LocalizatedForm):
     breakfast_persons = fields.StringField(
     	#validators=[validators.input_required()], 
     )
-    breakfast_comments = fields.StringField(widget = widgets.TextArea())
+    breakfast_comments = fields.TextField(widget = widgets.TextArea())
 
     lunch = fields.StringField(
     	#validators=[validators.input_required()], 
@@ -98,8 +94,8 @@ class Step3Form(LocalizatedForm):
     lunch_persons = fields.StringField(
     	#validators=[validators.input_required()], 
     )
-    lunch_comments = fields.StringField(widget = widgets.TextArea())
+    lunch_comments = fields.TextField(widget = widgets.TextArea())
 
     dinner = fields.StringField()
     dinner_persons = fields.StringField()
-    dinner_comments = fields.StringField()
+    dinner_comments = fields.TextField(widget = widgets.TextArea())

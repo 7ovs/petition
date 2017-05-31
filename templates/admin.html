@@ -29,25 +29,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for g in guests %}
+				{% for p in petitions %}
 				<tr>
-					<td>{{g.group_name}}</td>
-					<td>{{g.date_arr}}</td>
-					<td>{{g.date_dep}}</td>
-					<td>{{g.senior}}</td>
-					<td>{{g.pers_status}}</td>
-					<td>{{g.total_persons}}</td>
-					<td>{{g.is_ready}}</td>
+					<td>{{p.group_name}}</td>
+					<td>{{p.date_arr}}</td>
+					<td>{{p.date_dep}}</td>
+					<td>{{p.senior}}</td>
+					<td>{{p.pers_status}}</td>
+					<td>{{p.total_persons}}</td>
+					<td>{{p.is_ready}}</td>
 					<td>
-						<a href="/change_guest/{{g.pk}}/">
+						<a href="/change_guest/{{p.pk}}/">
 							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Подробная информация">
 								subject
 							</i>
 						</a>
 					</td>
-					{% if g.is_ready=="готова" %}
+					{% if p.is_ready=="готова" %}
 					<td>
-						<a href="/create_docx/{{g.pk}}">
+						<a href="/create_docx/{{p.pk}}">
 							<i class="small material-icons tooltipped" data-position="left" data-tooltip="Получить Word">
 								description
 							</i>

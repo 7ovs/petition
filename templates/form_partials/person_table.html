@@ -1,0 +1,39 @@
+<div>{{ field.label }}</div>     
+
+<table class="striped example" id="table-{{field.id}}"> 
+    <thead>
+        <th>{{localizator.name}}</th>
+    </thead>
+    <tbody id='{{field.id}}'>
+        {% if persons %}
+            {% for k, v in persons.items() %}
+                {% if field.id==k %}
+                    {% if not v %}
+                        <tr>
+                            <td>
+                                <input type="text" id="{{field.name}} cell 0" name="{{field.name}} cell 0">
+                            </td>
+                            <td></td>
+                        </tr>
+                    
+                    {%  else %}
+                        {% for row_value in v %}
+                            <tr>
+                                <td>
+                                    <input type="text" value="{{row_value}}" id="{{field.name}} cell {{loop.index + 1}}"" name="{{field.name}} cell {{loop.index + 1}}">
+                                </td>
+                                {% if loop.index!=1 %}
+                                <td><i class="material-icons del_row_button" onclick="deleteRow(this)" title="delete">clear</i></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+<i class="small material-icons add_row_button"  id="{{field.name}}" onclick="addRow(this)" >
+    add_box
+</i>
+<br>

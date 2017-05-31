@@ -1,0 +1,209 @@
+{
+	"form_fields" : 
+	{
+		"group_name" : 
+		{
+			"en" : "Group Name (location: country, city, parish) *",
+			"ru" : "Имя Группы *"
+		},
+		"senior" :
+		{
+			"en" : "Senior (person in charge) *",
+			"ru" : "Старший группы *"
+		},
+		"phone" : 
+		{
+			"en" : "Contact",
+			"ru" : "Номер телефона"
+		},
+		"arr_aim" :
+		{
+			"en" : "Goal of arrival",
+			"ru" : "Цель приезда"
+		},
+		"languages"	:
+		{
+			"en" : "Languages *",
+			"ru" : "Языки *"
+		},
+		"guest_information" :
+		{
+			"en" : "Guest information",
+			"ru" : "Информация о госте"
+		},
+
+		"email" : 
+		{
+			"en" : "E-mail",
+			"ru" : "E-mail"
+		},
+
+		"date_arr" : 
+		{
+			"en" : "Date  of arrival to monastary",
+			"ru" : "Время прибытия в монастырь"
+		},
+		"time_arr" :
+		{
+			"en" : "Time of arriaval to monastary",
+			"ru" : "Время прибытия в монастырь"
+		},
+		"date_dep" :
+		{
+			"en" : "Date of departure from monastary",
+			"ru" : "Дата отъезда из монастыря"
+		},
+		"time_dep" :
+		{
+			"en" : "Time of departure from monastary",
+			"ru" : "Время отъезда из монастыря"
+		},
+		"brothers" : 
+		{
+			"en" : "Male",
+			"ru" : "Братья"
+		},
+		"sisters" :
+		{
+			"en" : "Female",
+			"ru" : "Сестры"
+		},
+		"children"	:
+		{
+			"en" : "Children",
+			"ru" : "Дети"
+		},
+		"сlergy" :
+		{
+			"en" : "Clergy or monastic people",
+			"ru" : "Священство и монашествующие"
+		},
+
+		"tours" : 
+		{
+			"ru" : "Место и время проведения экскурсии",
+			"en" : "Place and time of the tour"
+		},
+		"transport" :
+		{
+			"en" : "Transport",
+			"ru" : "Транспорт для экскурсий (свой или наемный)"
+		},
+
+
+		"meal" : 
+		{
+			"en" : "Meal",
+			"ru" : "Трапеза"
+		},
+		"breakfast" :
+		{
+			"en" : " Breakfast time",
+			"ru" : "Завтрак, время"
+		},
+		"breakfast_persons" : 
+		{
+			"en" : "Number of persons",
+			"ru" : "Количество человек"
+		},
+		"lunch" :
+		{
+			"en" : "Lunch time",
+			"ru" : "Обеда, время"
+		},
+		"lunch_persons"	:
+		{
+			"en" : "Number of persons",
+			"ru" : "Количество человек "
+		},
+		"dinner" : 
+		{
+			"en" : "Dinner time",
+			"ru" : "Ужин, время"
+		},
+
+		"dinner_persons" : 
+			{
+				"en" : "Number of persons",
+				"ru" : "Количество человек "
+			},
+
+		"breakfast_comments" : {
+			"en" : "Breakfast comments",
+			"ru" : "Особенности завтрака "
+		},
+
+		"lunch_comments" : {
+			"en" : "Lunch comments",
+			"ru" : "Особенности обеда"
+		},
+
+		"dinner_comments" : {
+			"en" : "Dinner comments",
+			"ru" : "Особенности ужина"
+		}
+	},
+
+	"titles" : {
+		"back_button"	:
+		 {
+			"en" : "Back",
+			"ru" : "Назад"
+		},
+
+		"submit_button" : 
+		{
+			"en" : "Submit",
+			"ru" : "Подтвердить",
+			"es" : "Acteptar"
+		},
+
+		"main_info" : 
+		{
+			"en" : "Main information",
+			"ru" : "Основная информация"
+		},
+
+		"meal_info" : {
+			"en" : "Meal booking(time)",
+			"ru" : "Заказ трапезы"
+		},
+
+		"arriver_info" : {
+			"en" : "Arriver info",
+			"ru" : "Информация по прибывающим"
+		},
+
+		"main_page" :{
+			"en" : "Main page",
+			"ru" : "Главная страница"
+		},
+
+		"field_error" : {
+			"en" : "Fields required",
+			"ru" : "Заполните обязательные поля!"
+		},
+
+		"main_title" : {
+			"en" : "Petition",
+			"ru" : "Прошение"
+		},
+
+		"applied_petition" : 
+		{
+			"en" : "Your petition is aplied",
+			"ru" : "Заявка принята"
+		},
+		"add_person" :
+		{
+			"en" : "Add a person",
+			"ru" : "Добавить гостя"
+		},
+		"name" : 
+		{
+			"en" : "Name",
+			"ru" : "Имя"
+		}
+
+	}
+}

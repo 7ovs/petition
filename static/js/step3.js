@@ -12,18 +12,11 @@ $(document).ready(function(){
     	minTime: '7:00am',
 	    maxTime: '12:00am',
     });
-});
-
-$(document).ready(function(){
     $('#lunch').timepicker({
     	timeFormat: 'h:mm p',
     	minTime: '13:00pm',
 	    maxTime: '17:00pm',
     });
-});
-
-
-$(document).ready(function(){
     $('#dinner').timepicker({
     	timeFormat: 'h:mm p',
     	minTime: '18:00pm',
